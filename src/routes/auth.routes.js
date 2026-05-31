@@ -6,6 +6,7 @@ const {
   refreshTokenController,
   logoutController,
   logoutAllController,
+  verifyEmailController
 } = require("../controllers/auth.controller");
 
 const authRouter = express.Router();
@@ -39,5 +40,10 @@ authRouter.get("/logout", logoutController);
 GET /api/auth/logoutAll
 */
 authRouter.get("/logout-all", logoutAllController);
+
+/*
+GET /api/auth/verify-email
+*/
+authRouter.get('/verify-email', verifyEmailController)
 
 module.exports = authRouter;
