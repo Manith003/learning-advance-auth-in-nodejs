@@ -1,5 +1,12 @@
 const express = require("express");
-const { registerController, getMe,refreshToken } = require("../controllers/auth.controller");
+const {
+  registerController,
+  loginController,
+  getMeController,
+  refreshTokenController,
+  logoutController,
+  logoutAllController,
+} = require("../controllers/auth.controller");
 
 const authRouter = express.Router();
 
@@ -9,14 +16,28 @@ POST /api/auth/register
 authRouter.post("/register", registerController);
 
 /*
+POST /api/auth/login
+*/
+authRouter.post("/login", loginController);
+
+/*
 GET /api/auth/get-me
 */
-authRouter.get('/get-me', getMe)
+authRouter.get("/get-me", getMeController);
 
 /*
 GET /api/auth/refresh-token
 */
-authRouter.get('/refresh-token', refreshToken)
+authRouter.get("/refresh-token", refreshTokenController);
 
+/*
+GET /api/auth/logout
+*/
+authRouter.get("/logout", logoutController);
+
+/*
+GET /api/auth/logoutAll
+*/
+authRouter.get("/logout-all", logoutAllController);
 
 module.exports = authRouter;
